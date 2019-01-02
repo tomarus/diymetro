@@ -5,4 +5,8 @@ An Intellijel Metropolis / Roland System-100 model 185 / Detroit Underground DU-
 
 This is highly experimental.
 
-https://www.youtube.com/watch?v=XjalbW90R7U
+* https://www.youtube.com/watch?v=XjalbW90R7U
+
+* [View schematic as pdf](assets/schematic.pdf)
+
+![schematic](assets/schematic.png)
