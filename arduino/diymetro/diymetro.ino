@@ -2,7 +2,9 @@
 #define PIN_SPEED   A0
 #define PIN_GATELEN A1
 #define PIN_4051_Z  A2
-#define PIN_MAINSW  13
+#define PIN_MAINSW  A3
+#define PIN_CLKINSW A6
+#define PIN_CLKIN   2
 
 #define PIN_165_CLK  7
 #define PIN_165_SHLD 8
@@ -10,10 +12,10 @@
 
 // sensor outputs
 #define PIN_CLKOUT  3
-#define PIN_GATEOUT 2
+#define PIN_GATEOUT 12
 #define PIN_594_SER   10
 #define PIN_594_RCLK  11
-#define PIN_594_SRCLK 12
+#define PIN_594_SRCLK 13
 
 // control outputs
 #define PIN_4051_S0 4
@@ -40,7 +42,8 @@ void setup() {
   pinMode(PIN_165_CLK,   OUTPUT);
   pinMode(PIN_165_SHLD,  OUTPUT);
   pinMode(PIN_165_QH,    INPUT);
-  pinMode(PIN_MAINSW,    INPUT);
+  pinMode(PIN_CLKIN,     INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(PIN_CLKIN), clock_receive, RISING);
 }
 
 int step = 0;
@@ -48,18 +51,26 @@ int stepCount = 0;
 int maxSteps = 1;
 int reverse = 0;
 
+volatile byte clock = LOW;
+void clock_receive() {
+  clock = !clock;
+}
+
 void loop() {
   stepCount++; 
   if (stepCount >= maxSteps) {
     stepCount = 0;
 
-    int pingpong = digitalRead(PIN_MAINSW);
-    if (reverse && pingpong) {
-      step--;
-      if (step < 0) {
-        step = 7;
-        if (pingpong) { reverse = 0; step = 1; }
-      }
+  bool pingpong = analogRead(PIN_MAINSW) > 768;
+	if (reverse && pingpong) {
+		step--;
+		if (step < 0) {
+			step = 7;
+			if (pingpong) {
+				reverse = 0;
+				step = 1;
+			}
+		}
     } else {
       step++; 
       if (step == 8) {
@@ -77,14 +88,20 @@ void loop() {
 
   unsigned char switches = read_shift_reg();
   float gatelen = float(analogRead(PIN_GATELEN)) / 1024.0;
+
+  int clocksw = analogRead(PIN_CLKINSW);
+  clocksw = analogRead(PIN_CLKINSW);
+  int mainsw = analogRead(PIN_MAINSW);
+  mainsw = analogRead(PIN_MAINSW);
   
 #ifdef SERIAL_DEBUG
   Serial.print("step: ");      Serial.print(step);
   Serial.print(" maxsteps: "); Serial.print(maxSteps);
   Serial.print(" speed: ");    Serial.print(analogRead(PIN_SPEED));
   Serial.print(" gatelen: ");  Serial.print(gatelen);
-  Serial.print(" mainsw: ");   Serial.print(digitalRead(PIN_MAINSW));
+  Serial.print(" mainsw: ");   Serial.print(mainsw);
   Serial.print(" switches: "); Serial.print(switches, BIN);
+  Serial.print(" clocksw: ");  Serial.print(clocksw);
   Serial.println("");
 #endif
 
@@ -97,13 +114,27 @@ void loop() {
   }
   delayMicroseconds(10);
   digitalWrite(PIN_CLKOUT, LOW);
-  delay(sleep * gatelen);
+
+  delay(analogRead(PIN_GATELEN));
+//  delay(sleep * gatelen);
 
   if (sw) {
     digitalWrite(PIN_GATEOUT, LOW);
     shiftOut(0);
   }
-  delay(sleep * (1 - gatelen));
+
+  bool intclock = clocksw < 512;
+  if (intclock) {
+    delay(sleep * (1 - gatelen));
+  } else {
+    byte clkstate = clock;
+    while (clkstate == clock) {
+      clocksw = analogRead(PIN_CLKINSW);
+      // stop waiting for ext clock if cable is removed
+      if (clocksw < 512)
+        break;
+    }
+  }
 }
 
 // read_shift_reg reads the 74hc165 shift register for all switch values.
