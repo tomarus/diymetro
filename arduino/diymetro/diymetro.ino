@@ -57,6 +57,10 @@ int stepCount = 0;
 int maxSteps = 1;
 int reverse = 0;
 
+unsigned long lastNotePlayed = micros();
+bool gateOpen = false;
+
+// clock_receive is a hardware interrupt callback.
 byte clkState = LOW;
 volatile byte clock = LOW;
 void clock_receive()
@@ -64,26 +68,26 @@ void clock_receive()
 	clock = !clock;
 }
 
-unsigned long lastNotePlayed = micros();
-bool gateOpen = false;
+
+// myAnalogRead reads the analog input twice
+// to stabilize the ADC input before returning
+// a value.
+int myAnalogRead(int pin)
+{
+	analogRead(pin);
+	return analogRead(pin);
+}
 
 void loop()
 {
-	// We use double reads on all analogRead's to
-	// stabilize the ADC's before reads.
-	int gatelenr = analogRead(PIN_GATELEN);
-	gatelenr = analogRead(PIN_GATELEN);
-	float gatelen = float(gatelenr) / 1024.0;
+	// gatelen goes from 0.0 to 1.0
+	float gatelen = float(myAnalogRead(PIN_GATELEN)) / 1024.0;
 
-	int speedr = analogRead(PIN_SPEED);
-	speedr = analogRead(PIN_SPEED);
 	// calc note length in microseconds, this ranges from about 6 to 300 bpm or so
-	unsigned long speed = 60000000.0 / (float(speedr) + 10.0);
+	unsigned long speed = 60000000.0 / (float(myAnalogRead(PIN_SPEED)) + 10.0);
 
 	// clocksw is high if an external clock is plugged in.
-	int clocksw = analogRead(PIN_CLKINSW);
-	clocksw = analogRead(PIN_CLKINSW);
-	bool intclock = clocksw < 512;
+	bool intclock = myAnalogRead(PIN_CLKINSW) < 512;
 
 	// if the gate is still open, turn it off after some time.
 	if (gateOpen && lastNotePlayed < micros() - (MAX_GATE_TIME * gatelen))
@@ -120,16 +124,14 @@ void loop()
 		gateOpen = false;
 	}
 
-	bool gated = do_step();
 	lastNotePlayed = micros();
-	gateOpen = gated;
+	gateOpen = do_step();
 }
 
 bool do_step()
 {
 	// mainsw is the 'pingpong' switch
-	int mainsw = analogRead(PIN_MAINSW);
-	mainsw = analogRead(PIN_MAINSW);
+	int mainsw = myAnalogRead(PIN_MAINSW);
 
 	stepCount++;
 	if (stepCount >= maxSteps)
@@ -169,9 +171,7 @@ bool do_step()
 	digitalWrite(PIN_4051_S1, bitRead(step, 1));
 	digitalWrite(PIN_4051_S2, bitRead(step, 2));
 
-	// read twice again, see notes above.
-	maxSteps = analogRead(PIN_4051_Z) / 128;
-	maxSteps = analogRead(PIN_4051_Z) / 128;
+	maxSteps = myAnalogRead(PIN_4051_Z) / 128;
 
 	unsigned char switches = read_shift_reg();
 	bool sw = switches & (1 << step);
