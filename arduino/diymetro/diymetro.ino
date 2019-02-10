@@ -8,19 +8,20 @@
 #define PIN_GATELEN A1
 #define PIN_4051_Z A2
 #define PIN_MAINSW A3
-#define PIN_CLKINSW A6
+#define PIN_CLKINSW A4
 #define PIN_CLKIN 2
+#define PIN_RSTIN 3
 
-#define PIN_165_CLK 7 // XX
+#define PIN_165_CLK 13
 #define PIN_165_SHLD 8
 #define PIN_165_QH 9
 
 // sensor outputs
-#define PIN_CLKOUT 3
+#define PIN_CLKOUT 7
 #define PIN_GATEOUT 12
 #define PIN_594_SER 10
 #define PIN_594_RCLK 11
-#define PIN_594_SRCLK 13 // XX
+#define PIN_594_SRCLK 13
 
 // control outputs
 #define PIN_4051_S0 4
@@ -50,6 +51,7 @@ void setup()
 	pinMode(PIN_165_QH, INPUT);
 	pinMode(PIN_CLKIN, INPUT_PULLUP);
 	attachInterrupt(digitalPinToInterrupt(PIN_CLKIN), clock_receive, RISING);
+	attachInterrupt(digitalPinToInterrupt(PIN_RSTIN), reset_receive, RISING);
 }
 
 int step = 0;
@@ -68,6 +70,12 @@ void clock_receive()
 	clock = !clock;
 }
 
+// reset_receive is a hardware interrupt callback.
+volatile byte reset = LOW;
+void reset_receive()
+{
+	reset = !reset;
+}
 
 // myAnalogRead reads the analog input twice
 // to stabilize the ADC input before returning
@@ -78,8 +86,20 @@ int myAnalogRead(int pin)
 	return analogRead(pin);
 }
 
+void doreset()
+{
+	reset = false;
+	stepCount = maxSteps;
+	step = -1;
+	reverse = 0;
+}
+
 void loop()
 {
+	if (reset)
+	{
+		doreset();
+	}
 	// gatelen goes from 0.0 to 1.0
 	float gatelen = float(myAnalogRead(PIN_GATELEN)) / 1024.0;
 
@@ -171,8 +191,6 @@ bool do_step()
 	digitalWrite(PIN_4051_S1, bitRead(step, 1));
 	digitalWrite(PIN_4051_S2, bitRead(step, 2));
 
-	maxSteps = myAnalogRead(PIN_4051_Z) / 128;
-
 	unsigned char switches = read_shift_reg();
 	bool sw = switches & (1 << step);
 
@@ -187,7 +205,9 @@ bool do_step()
 	delayMicroseconds(CLOCK_LENGTH);
 	digitalWrite(PIN_CLKOUT, LOW);
 
-	// return wether or not we want a gate stop.
+	maxSteps = map(myAnalogRead(PIN_4051_Z), 0, 1023, 1, 8); // / 128;
+
+	// return whether or not the gate was triggered.
 	return sw;
 }
 
