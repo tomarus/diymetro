@@ -30,14 +30,8 @@
 
 #define HC165_PULSE_WIDTH_USEC 5
 
-// Set SERIAL_DEBUG to print debug info to serial
-#define SERIAL_DEBUG
-
 void setup()
 {
-#ifdef SERIAL_DEBUG
-	Serial.begin(115200);
-#endif
 	pinMode(PIN_CLKOUT, OUTPUT);
 	pinMode(PIN_GATEOUT, OUTPUT);
 	pinMode(PIN_4051_S0, OUTPUT);
@@ -193,6 +187,11 @@ bool do_step()
 
 	unsigned char switches = read_shift_reg();
 	bool sw = switches & (1 << step);
+
+	// This value could be lower if the 220n cap was also lower.
+	// This delay makes sure the output value is stabilized
+	// before sending clock + gate signals.
+	delayMicroseconds(200);
 
 	// toggle clock and gate if the gate switch is on.
 	digitalWrite(PIN_CLKOUT, HIGH);
