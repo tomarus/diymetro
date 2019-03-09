@@ -2,6 +2,7 @@
 // configurables
 #define MAX_GATE_TIME 1000000 // in microseconds
 #define CLOCK_LENGTH 10		  // in microseconds
+#define GATE_DELAY 1400
 
 // sensor inputs
 #define PIN_SPEED A0
@@ -23,7 +24,8 @@
 #define PIN_594_RCLK 11
 #define PIN_594_SRCLK 13
 
-// control outputs
+// 4051 port configuration.
+// You can't change this without changing PORTD logic below.
 #define PIN_4051_S0 4
 #define PIN_4051_S1 5
 #define PIN_4051_S2 6
@@ -181,17 +183,15 @@ bool do_step()
 		}
 	}
 
-	digitalWrite(PIN_4051_S0, bitRead(step, 0));
-	digitalWrite(PIN_4051_S1, bitRead(step, 1));
-	digitalWrite(PIN_4051_S2, bitRead(step, 2));
+	// Set PIN_4051_Sxx
+	PORTD = (PORTD & 0b10001111) | (step << 4);
 
 	unsigned char switches = read_shift_reg();
 	bool sw = switches & (1 << step);
 
-	// This value could be lower if the 220n cap was also lower.
-	// This delay makes sure the output value is stabilized
-	// before sending clock + gate signals.
-	delayMicroseconds(200);
+	// Wait for this many microseconds after switching the 4051
+	// before sending the gate signal.
+	delayMicroseconds(GATE_DELAY);
 
 	// toggle clock and gate if the gate switch is on.
 	digitalWrite(PIN_CLKOUT, HIGH);
