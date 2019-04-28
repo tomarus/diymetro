@@ -1,8 +1,23 @@
-
-// configurables
-#define MAX_GATE_TIME 1000000 // in microseconds
-#define CLOCK_LENGTH 10		  // in microseconds
+// Timing configurables, all values are in microseconds.
+// You might need to tweak these depending on your hardware.
+#define CLOCK_LENGTH 50
 #define GATE_DELAY 1400
+
+// Defines the max length in microsecs of the gate length pot.
+#define MAX_GATE_TIME 1000000
+
+// Configure the main switch behaviour.
+// Mode 0 = Switch between forward & pingpong mode.
+// Mode 1 = Switch between substep & pingpong mode.
+// Mode 2 = Switch between substep & forward mode.
+#define MAINSW_MODE 2
+
+// "Substep" is inspired by the System 100m 185 mk2 Split Mode.
+// https://www.youtube.com/watch?v=KMH-QNW8toE
+// Set to 16 to play 3 x notes 1-4 and 1 x notes 5-8
+// Set to 32 to play 7 x notes 1-4 and 1 x notes 5-8
+// (And 8 would be the same as forward mode)
+#define SUBSTEP_PATTERN_LENGTH 32
 
 // sensor inputs
 #define PIN_SPEED A0
@@ -54,6 +69,7 @@ int step = 0;
 int stepCount = 0;
 int maxSteps = 1;
 int reverse = 0;
+int substep = 0;
 
 unsigned long lastNotePlayed = micros();
 bool gateOpen = false;
@@ -88,6 +104,7 @@ void doreset()
 	stepCount = maxSteps;
 	step = -1;
 	reverse = 0;
+	substep = -1;
 }
 
 void loop()
@@ -144,43 +161,15 @@ void loop()
 	gateOpen = do_step();
 }
 
+// do_step outputs clock + gate and if
+// necessary advances the sequencer by a step.
 bool do_step()
 {
-	// mainsw is the 'pingpong' switch
-	int mainsw = myAnalogRead(PIN_MAINSW);
-
 	stepCount++;
 	if (stepCount >= maxSteps)
 	{
 		stepCount = 0;
-
-		bool pingpong = mainsw > 768;
-		if (reverse && pingpong)
-		{
-			step--;
-			if (step < 0)
-			{
-				step = 7;
-				if (pingpong)
-				{
-					reverse = 0;
-					step = 1;
-				}
-			}
-		}
-		else
-		{
-			step++;
-			if (step == 8)
-			{
-				step = 0;
-				if (pingpong)
-				{
-					reverse = 1;
-					step = 6;
-				}
-			}
-		}
+		advance();
 	}
 
 	// Set PIN_4051_Sxx
@@ -208,6 +197,105 @@ bool do_step()
 
 	// return whether or not the gate was triggered.
 	return sw;
+}
+
+// advance the sequencer in forward mode
+void advance_fwd()
+{
+	step++;
+	if (step == 8)
+	{
+		step = 0;
+	}
+}
+
+// advance the sequencer in pingpong mode
+void advance_pingpong()
+{
+	if (reverse)
+	{
+		step--;
+		if (step < 0)
+		{
+			step = 7;
+			reverse = 0;
+			step = 1;
+		}
+	}
+	else
+	{
+		step++;
+		if (step == 8)
+		{
+			step = 0;
+			reverse = 1;
+			step = 6;
+		}
+	}
+}
+
+// advance the sequencer in substep mode
+void advance_substep()
+{
+	substep++;
+	if (substep == SUBSTEP_PATTERN_LENGTH)
+	{
+		substep = 0;
+	}
+
+	if (substep < SUBSTEP_PATTERN_LENGTH - 4)
+	{
+		// play notes 1-4
+		step = substep % 4;
+	}
+	else
+	{
+		// play notes 5-8
+		step = substep + 8 - SUBSTEP_PATTERN_LENGTH;
+	}
+}
+
+// advance advances the sequencer by one step
+void advance()
+{
+	bool mainsw = myAnalogRead(PIN_MAINSW) < 768;
+
+	// I might redo this in the future. Instead of having a switch and
+	// one #define statement, I might add a pushbutton and a LED indicator
+	// of the mode selected. A random() mode would be nice to have too.
+
+#if MAINSW_MODE == 0
+	if (mainsw)
+	{
+		advance_fwd();
+	}
+	else
+	{
+		advance_pingpong();
+	}
+
+#elif MAINSW_MODE == 1
+	if (mainsw)
+	{
+		advance_substep();
+	}
+	else
+	{
+		advance_pingpong();
+	}
+
+#elif MAINSW_MODE == 2
+	if (mainsw)
+	{
+		advance_fwd();
+	}
+	else
+	{
+		advance_substep();
+	}
+#else
+#error "Wrong MAINSW_MODE defined"
+#endif
 }
 
 // read_shift_reg reads the 74hc165 shift register for all switch values.
