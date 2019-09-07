@@ -10,14 +10,14 @@
 // Mode 0 = Switch between forward & pingpong mode.
 // Mode 1 = Switch between substep & pingpong mode.
 // Mode 2 = Switch between substep & forward mode.
-#define MAINSW_MODE 2
+#define MAINSW_MODE 0
 
 // "Substep" is inspired by the System 100m 185 mk2 Split Mode.
 // https://www.youtube.com/watch?v=KMH-QNW8toE
 // Set to 16 to play 3 x notes 1-4 and 1 x notes 5-8
 // Set to 32 to play 7 x notes 1-4 and 1 x notes 5-8
 // (And 8 would be the same as forward mode)
-#define SUBSTEP_PATTERN_LENGTH 32
+#define SUBSTEP_PATTERN_LENGTH 24
 
 // sensor inputs
 #define PIN_SPEED A0
@@ -105,6 +105,10 @@ void doreset()
 	step = -1;
 	reverse = 0;
 	substep = -1;
+
+	lastNotePlayed = micros();
+	clkState = LOW;
+	clock = HIGH;
 }
 
 void loop()
