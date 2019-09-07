@@ -1,0 +1,257 @@
+EESchema Schematic File Version 4
+LIBS:diymetro-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 4 6
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Switch:SW_Rotary12 SW9
+U 1 1 5D16AB97
+P 5600 3500
+F 0 "SW9" H 5500 4278 50  0000 C CNN
+F 1 "SW_Rotary12" H 5500 4187 50  0000 C CNN
+F 2 "Tomarus:SR2612F_RotarySwitch" H 5400 4200 50  0001 C CNN
+F 3 "http://cdn-reichelt.de/documents/datenblatt/C200/DS-Serie%23LOR.pdf" H 5400 4200 50  0001 C CNN
+	1    5600 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R32
+U 1 1 5D16AB9E
+P 6400 1700
+F 0 "R32" H 6330 1654 50  0000 R CNN
+F 1 "1K" H 6330 1745 50  0000 R CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 6330 1700 50  0001 C CNN
+F 3 "~" H 6400 1700 50  0001 C CNN
+	1    6400 1700
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R33
+U 1 1 5D16ABA5
+P 6400 2000
+F 0 "R33" H 6330 1954 50  0000 R CNN
+F 1 "1K" H 6330 2045 50  0000 R CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 6330 2000 50  0001 C CNN
+F 3 "~" H 6400 2000 50  0001 C CNN
+	1    6400 2000
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R34
+U 1 1 5D16ABAC
+P 6400 2300
+F 0 "R34" H 6330 2254 50  0000 R CNN
+F 1 "1K" H 6330 2345 50  0000 R CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 6330 2300 50  0001 C CNN
+F 3 "~" H 6400 2300 50  0001 C CNN
+	1    6400 2300
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R35
+U 1 1 5D16ABB3
+P 6400 2600
+F 0 "R35" H 6330 2554 50  0000 R CNN
+F 1 "1K" H 6330 2645 50  0000 R CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 6330 2600 50  0001 C CNN
+F 3 "~" H 6400 2600 50  0001 C CNN
+	1    6400 2600
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R36
+U 1 1 5D16ABBA
+P 6400 2900
+F 0 "R36" H 6330 2854 50  0000 R CNN
+F 1 "1K" H 6330 2945 50  0000 R CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 6330 2900 50  0001 C CNN
+F 3 "~" H 6400 2900 50  0001 C CNN
+	1    6400 2900
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R37
+U 1 1 5D16ABC1
+P 6400 3200
+F 0 "R37" H 6330 3154 50  0000 R CNN
+F 1 "1K" H 6330 3245 50  0000 R CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 6330 3200 50  0001 C CNN
+F 3 "~" H 6400 3200 50  0001 C CNN
+	1    6400 3200
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R38
+U 1 1 5D16ABC8
+P 6400 3500
+F 0 "R38" H 6330 3454 50  0000 R CNN
+F 1 "1K" H 6330 3545 50  0000 R CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 6330 3500 50  0001 C CNN
+F 3 "~" H 6400 3500 50  0001 C CNN
+	1    6400 3500
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R39
+U 1 1 5D16ABCF
+P 6400 3800
+F 0 "R39" H 6330 3754 50  0000 R CNN
+F 1 "1K" H 6330 3845 50  0000 R CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 6330 3800 50  0001 C CNN
+F 3 "~" H 6400 3800 50  0001 C CNN
+	1    6400 3800
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R40
+U 1 1 5D16ABD6
+P 6400 4100
+F 0 "R40" H 6330 4054 50  0000 R CNN
+F 1 "1K" H 6330 4145 50  0000 R CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 6330 4100 50  0001 C CNN
+F 3 "~" H 6400 4100 50  0001 C CNN
+	1    6400 4100
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R41
+U 1 1 5D16ABDD
+P 6400 4400
+F 0 "R41" H 6330 4354 50  0000 R CNN
+F 1 "1K" H 6330 4445 50  0000 R CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 6330 4400 50  0001 C CNN
+F 3 "~" H 6400 4400 50  0001 C CNN
+	1    6400 4400
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R42
+U 1 1 5D16ABE4
+P 6400 4700
+F 0 "R42" H 6330 4654 50  0000 R CNN
+F 1 "1K" H 6330 4745 50  0000 R CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 6330 4700 50  0001 C CNN
+F 3 "~" H 6400 4700 50  0001 C CNN
+	1    6400 4700
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R43
+U 1 1 5D16ABEB
+P 6400 5000
+F 0 "R43" H 6330 4954 50  0000 R CNN
+F 1 "1K" H 6330 5045 50  0000 R CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 6330 5000 50  0001 C CNN
+F 3 "~" H 6400 5000 50  0001 C CNN
+	1    6400 5000
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R44
+U 1 1 5D16ABF2
+P 6400 5300
+F 0 "R44" H 6330 5254 50  0000 R CNN
+F 1 "1K" H 6330 5345 50  0000 R CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 6330 5300 50  0001 C CNN
+F 3 "~" H 6400 5300 50  0001 C CNN
+	1    6400 5300
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6000 2900 6000 1850
+Wire Wire Line
+	6000 1850 6400 1850
+Connection ~ 6400 1850
+Wire Wire Line
+	6400 2150 6050 2150
+Wire Wire Line
+	6050 2150 6050 3000
+Wire Wire Line
+	6050 3000 6000 3000
+Connection ~ 6400 2150
+Wire Wire Line
+	6000 3100 6100 3100
+Wire Wire Line
+	6100 3100 6100 2450
+Wire Wire Line
+	6100 2450 6400 2450
+Connection ~ 6400 2450
+Wire Wire Line
+	6400 2750 6150 2750
+Wire Wire Line
+	6150 2750 6150 3200
+Wire Wire Line
+	6000 3200 6150 3200
+Connection ~ 6400 2750
+Wire Wire Line
+	6200 3300 6200 3050
+Wire Wire Line
+	6200 3050 6400 3050
+Wire Wire Line
+	6000 3300 6200 3300
+Connection ~ 6400 3050
+Wire Wire Line
+	6000 3400 6250 3400
+Wire Wire Line
+	6250 3400 6250 3350
+Wire Wire Line
+	6250 3350 6400 3350
+Connection ~ 6400 3350
+Wire Wire Line
+	6000 3600 6250 3600
+Wire Wire Line
+	6250 3600 6250 3650
+Wire Wire Line
+	6250 3650 6400 3650
+Connection ~ 6400 3650
+Wire Wire Line
+	6400 3950 6200 3950
+Wire Wire Line
+	6200 3950 6200 3700
+Wire Wire Line
+	6200 3700 6000 3700
+Connection ~ 6400 3950
+Wire Wire Line
+	6000 3800 6150 3800
+Wire Wire Line
+	6150 3800 6150 4250
+Wire Wire Line
+	6150 4250 6400 4250
+Connection ~ 6400 4250
+Wire Wire Line
+	6400 4550 6100 4550
+Wire Wire Line
+	6100 4550 6100 3900
+Wire Wire Line
+	6100 3900 6000 3900
+Connection ~ 6400 4550
+Wire Wire Line
+	6000 4100 6000 5150
+Wire Wire Line
+	6000 5150 6400 5150
+Connection ~ 6400 5150
+Wire Wire Line
+	6000 4000 6050 4000
+Wire Wire Line
+	6050 4000 6050 4850
+Wire Wire Line
+	6050 4850 6400 4850
+Connection ~ 6400 4850
+Text HLabel 6400 1550 1    50   Input ~ 0
++5V
+Text HLabel 6400 5450 3    50   Input ~ 0
+GND
+Text HLabel 5000 3500 0    50   Input ~ 0
+RA
+$EndSCHEMATC

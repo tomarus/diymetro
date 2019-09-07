@@ -1,0 +1,309 @@
+EESchema Schematic File Version 4
+LIBS:diymetro-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 3 6
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Device:C C?
+U 1 1 5D172EAC
+P 5200 4700
+AR Path="/5CAA6291/5D172EAC" Ref="C?"  Part="1" 
+AR Path="/5D16AB61/5D172EAC" Ref="C2"  Part="1" 
+F 0 "C2" H 5315 4746 50  0000 L CNN
+F 1 "100n" H 5315 4655 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric" H 5238 4550 50  0001 C CNN
+F 3 "~" H 5200 4700 50  0001 C CNN
+	1    5200 4700
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5D172EC1
+P 5750 3100
+AR Path="/5CAA6291/5D172EC1" Ref="R?"  Part="1" 
+AR Path="/5D16AB61/5D172EC1" Ref="R24"  Part="1" 
+F 0 "R24" V 5800 2950 50  0000 C CNN
+F 1 "220" V 5750 3100 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 5680 3100 50  0001 C CNN
+F 3 "~" H 5750 3100 50  0001 C CNN
+	1    5750 3100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5D172EC8
+P 5750 3200
+AR Path="/5CAA6291/5D172EC8" Ref="R?"  Part="1" 
+AR Path="/5D16AB61/5D172EC8" Ref="R25"  Part="1" 
+F 0 "R25" V 5800 3050 50  0000 C CNN
+F 1 "220" V 5750 3200 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 5680 3200 50  0001 C CNN
+F 3 "~" H 5750 3200 50  0001 C CNN
+	1    5750 3200
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5D172ECF
+P 5750 3300
+AR Path="/5CAA6291/5D172ECF" Ref="R?"  Part="1" 
+AR Path="/5D16AB61/5D172ECF" Ref="R26"  Part="1" 
+F 0 "R26" V 5800 3150 50  0000 C CNN
+F 1 "220" V 5750 3300 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 5680 3300 50  0001 C CNN
+F 3 "~" H 5750 3300 50  0001 C CNN
+	1    5750 3300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5D172ED6
+P 5750 3400
+AR Path="/5CAA6291/5D172ED6" Ref="R?"  Part="1" 
+AR Path="/5D16AB61/5D172ED6" Ref="R27"  Part="1" 
+F 0 "R27" V 5800 3250 50  0000 C CNN
+F 1 "220" V 5750 3400 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 5680 3400 50  0001 C CNN
+F 3 "~" H 5750 3400 50  0001 C CNN
+	1    5750 3400
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5D172EDD
+P 5750 3500
+AR Path="/5CAA6291/5D172EDD" Ref="R?"  Part="1" 
+AR Path="/5D16AB61/5D172EDD" Ref="R28"  Part="1" 
+F 0 "R28" V 5800 3350 50  0000 C CNN
+F 1 "220" V 5750 3500 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 5680 3500 50  0001 C CNN
+F 3 "~" H 5750 3500 50  0001 C CNN
+	1    5750 3500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5D172EE4
+P 5750 3600
+AR Path="/5CAA6291/5D172EE4" Ref="R?"  Part="1" 
+AR Path="/5D16AB61/5D172EE4" Ref="R29"  Part="1" 
+F 0 "R29" V 5800 3450 50  0000 C CNN
+F 1 "220" V 5750 3600 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 5680 3600 50  0001 C CNN
+F 3 "~" H 5750 3600 50  0001 C CNN
+	1    5750 3600
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5D172EEB
+P 5750 3700
+AR Path="/5CAA6291/5D172EEB" Ref="R?"  Part="1" 
+AR Path="/5D16AB61/5D172EEB" Ref="R30"  Part="1" 
+F 0 "R30" V 5800 3525 50  0000 C CNN
+F 1 "220" V 5750 3700 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 5680 3700 50  0001 C CNN
+F 3 "~" H 5750 3700 50  0001 C CNN
+	1    5750 3700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5D172EF2
+P 5750 3800
+AR Path="/5CAA6291/5D172EF2" Ref="R?"  Part="1" 
+AR Path="/5D16AB61/5D172EF2" Ref="R31"  Part="1" 
+F 0 "R31" V 5800 3625 50  0000 C CNN
+F 1 "220" V 5750 3800 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 5680 3800 50  0001 C CNN
+F 3 "~" H 5750 3800 50  0001 C CNN
+	1    5750 3800
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5900 3800 5950 3800
+Wire Wire Line
+	5950 3700 5900 3700
+Wire Wire Line
+	5900 3600 5950 3600
+Wire Wire Line
+	5950 3500 5900 3500
+Wire Wire Line
+	5900 3400 5950 3400
+Wire Wire Line
+	5950 3300 5900 3300
+Wire Wire Line
+	5900 3200 5950 3200
+Wire Wire Line
+	5950 3100 5900 3100
+$Comp
+L Device:LED D4
+U 1 1 5D17E974
+P 6100 3100
+F 0 "D4" H 5650 3050 50  0000 C CNN
+F 1 "LED" H 5800 3050 50  0000 C CNN
+F 2 "LED_THT:LED_D3.0mm" H 6100 3100 50  0001 C CNN
+F 3 "~" H 6100 3100 50  0001 C CNN
+	1    6100 3100
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6250 3100 6800 3100
+$Comp
+L Device:LED D5
+U 1 1 5D16EC25
+P 6100 3200
+F 0 "D5" H 5650 3150 50  0000 C CNN
+F 1 "LED" H 5800 3150 50  0000 C CNN
+F 2 "LED_THT:LED_D3.0mm" H 6100 3200 50  0001 C CNN
+F 3 "~" H 6100 3200 50  0001 C CNN
+	1    6100 3200
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D6
+U 1 1 5D16EC4D
+P 6100 3300
+F 0 "D6" H 5650 3250 50  0000 C CNN
+F 1 "LED" H 5800 3250 50  0000 C CNN
+F 2 "LED_THT:LED_D3.0mm" H 6100 3300 50  0001 C CNN
+F 3 "~" H 6100 3300 50  0001 C CNN
+	1    6100 3300
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D7
+U 1 1 5D16EC77
+P 6100 3400
+F 0 "D7" H 5650 3350 50  0000 C CNN
+F 1 "LED" H 5800 3350 50  0000 C CNN
+F 2 "LED_THT:LED_D3.0mm" H 6100 3400 50  0001 C CNN
+F 3 "~" H 6100 3400 50  0001 C CNN
+	1    6100 3400
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D8
+U 1 1 5D16ECA3
+P 6100 3500
+F 0 "D8" H 5650 3450 50  0000 C CNN
+F 1 "LED" H 5800 3450 50  0000 C CNN
+F 2 "LED_THT:LED_D3.0mm" H 6100 3500 50  0001 C CNN
+F 3 "~" H 6100 3500 50  0001 C CNN
+	1    6100 3500
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D9
+U 1 1 5D16ECD1
+P 6100 3600
+F 0 "D9" H 5650 3550 50  0000 C CNN
+F 1 "LED" H 5800 3550 50  0000 C CNN
+F 2 "LED_THT:LED_D3.0mm" H 6100 3600 50  0001 C CNN
+F 3 "~" H 6100 3600 50  0001 C CNN
+	1    6100 3600
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D10
+U 1 1 5D16ED6F
+P 6100 3700
+F 0 "D10" H 5650 3650 50  0000 C CNN
+F 1 "LED" H 5800 3650 50  0000 C CNN
+F 2 "LED_THT:LED_D3.0mm" H 6100 3700 50  0001 C CNN
+F 3 "~" H 6100 3700 50  0001 C CNN
+	1    6100 3700
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D11
+U 1 1 5D16EDA9
+P 6100 3800
+F 0 "D11" H 5650 3750 50  0000 C CNN
+F 1 "LED" H 5800 3750 50  0000 C CNN
+F 2 "LED_THT:LED_D3.0mm" H 6100 3800 50  0001 C CNN
+F 3 "~" H 6100 3800 50  0001 C CNN
+	1    6100 3800
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6800 3200 6800 3100
+Wire Wire Line
+	6800 3200 6800 3300
+Wire Wire Line
+	6800 3300 6250 3300
+Connection ~ 6800 3200
+Wire Wire Line
+	6250 3200 6800 3200
+Wire Wire Line
+	6250 3400 6800 3400
+Wire Wire Line
+	6800 3400 6800 3300
+Connection ~ 6800 3300
+Wire Wire Line
+	6800 3400 6800 3500
+Wire Wire Line
+	6800 3500 6250 3500
+Connection ~ 6800 3400
+Wire Wire Line
+	6250 3600 6800 3600
+Wire Wire Line
+	6800 3600 6800 3500
+Connection ~ 6800 3500
+Wire Wire Line
+	6800 3600 6800 3700
+Wire Wire Line
+	6800 3700 6250 3700
+Connection ~ 6800 3600
+Wire Wire Line
+	6250 3800 6800 3800
+Wire Wire Line
+	6800 3800 6800 3700
+Connection ~ 6800 3700
+Text HLabel 6800 3850 3    50   Input ~ 0
+GND
+Wire Wire Line
+	6800 3850 6800 3800
+Connection ~ 6800 3800
+$Comp
+L 74xx:74LS595 U2
+U 1 1 5D17235C
+P 5200 3500
+F 0 "U2" H 5000 4200 50  0000 C CNN
+F 1 "74LS595" H 4900 4100 50  0000 C CNN
+F 2 "Package_SO:SOP-16_4.4x10.4mm_P1.27mm" H 5200 3500 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74ls595" H 5200 3500 50  0001 C CNN
+	1    5200 3500
+	1    0    0    -1  
+$EndComp
+NoConn ~ 5600 4000
+Text HLabel 5200 4200 3    50   Input ~ 0
+GND
+Text HLabel 5200 2900 1    50   Input ~ 0
++5V
+Text HLabel 4800 3100 0    50   Input ~ 0
+SER
+Text HLabel 4800 3300 0    50   Input ~ 0
+SCLK
+Text HLabel 4800 3400 0    50   Input ~ 0
++5V
+Text HLabel 4800 3600 0    50   Input ~ 0
+RCLK
+Text HLabel 4800 3700 0    50   Input ~ 0
++5V
+Text HLabel 5350 4700 2    50   Input ~ 0
+GND
+Text HLabel 5050 4700 0    50   Input ~ 0
++5V
+$EndSCHEMATC
