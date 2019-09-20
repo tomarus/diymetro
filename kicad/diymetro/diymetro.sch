@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 6
 Title "DIY Metropolis 185"
-Date "2019-02-10"
+Date ""
 Rev "1.1"
 Comp "Tommy van Leeuwen"
 Comment1 "https://github.com/tomarus/diymetro"
