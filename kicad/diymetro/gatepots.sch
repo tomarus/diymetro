@@ -156,7 +156,7 @@ F 3 "~" H 5000 4950 50  0001 C CNN
 	1    5000 4950
 	0    -1   -1   0   
 $EndComp
-Text HLabel 5250 1450 1    50   Input ~ 0
+Text HLabel 4750 5250 3    50   Input ~ 0
 +5V
 Text Label 3250 2300 0    50   ~ 0
 GA0
@@ -278,7 +278,7 @@ Wire Wire Line
 Wire Wire Line
 	5150 4950 5250 4950
 Connection ~ 5250 4550
-Text HLabel 4750 5250 3    50   Input ~ 0
+Text HLabel 5250 1450 1    50   Input ~ 0
 GND
 Text HLabel 2850 2100 1    50   Input ~ 0
 +5V
