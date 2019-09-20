@@ -406,19 +406,6 @@ $EndComp
 Wire Wire Line
 	8500 3850 8550 3850
 $Comp
-L Transistor_BJT:PN2222A Q?
-U 1 1 5D188326
-P 2400 6050
-AR Path="/5CAA6291/5D188326" Ref="Q?"  Part="1" 
-AR Path="/5D188326" Ref="Q2"  Part="1" 
-F 0 "Q2" H 2591 6096 50  0000 L CNN
-F 1 "PN2222A" H 2591 6005 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 2600 5975 50  0001 L CIN
-F 3 "http://www.fairchildsemi.com/ds/PN/PN2222A.pdf" H 2400 6050 50  0001 L CNN
-	1    2400 6050
-	-1   0    0    1   
-$EndComp
-$Comp
 L Device:R R?
 U 1 1 5D18832D
 P 2850 6050
@@ -431,8 +418,6 @@ F 3 "~" H 2850 6050 50  0001 C CNN
 	1    2850 6050
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	2600 6050 2700 6050
 $Comp
 L power:GND #PWR?
 U 1 1 5D188336
@@ -482,7 +467,6 @@ Wire Wire Line
 	1850 5800 2300 5800
 Wire Wire Line
 	3250 5950 3300 5950
-Connection ~ 3300 5950
 Wire Wire Line
 	3300 5800 3300 5950
 Text GLabel 3300 5800 1    50   Input ~ 0
@@ -518,19 +502,6 @@ $EndComp
 Wire Wire Line
 	2300 6300 2300 6250
 $Comp
-L Transistor_BJT:PN2222A Q?
-U 1 1 5D188368
-P 2400 4500
-AR Path="/5CAA6291/5D188368" Ref="Q?"  Part="1" 
-AR Path="/5D188368" Ref="Q1"  Part="1" 
-F 0 "Q1" H 2591 4546 50  0000 L CNN
-F 1 "PN2222A" H 2591 4455 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 2600 4425 50  0001 L CIN
-F 3 "http://www.fairchildsemi.com/ds/PN/PN2222A.pdf" H 2400 4500 50  0001 L CNN
-	1    2400 4500
-	-1   0    0    1   
-$EndComp
-$Comp
 L Device:R R?
 U 1 1 5D18836F
 P 2850 4500
@@ -543,8 +514,6 @@ F 3 "~" H 2850 4500 50  0001 C CNN
 	1    2850 4500
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	2600 4500 2700 4500
 $Comp
 L power:GND #PWR?
 U 1 1 5D188378
@@ -767,15 +736,15 @@ $EndComp
 $Comp
 L Connector:AudioJack2_SwitchT J?
 U 1 1 5D194F65
-P 3850 5950
+P 3850 6050
 AR Path="/5CA98B27/5D194F65" Ref="J?"  Part="1" 
 AR Path="/5D194F65" Ref="J6"  Part="1" 
-F 0 "J6" H 3880 6275 50  0000 C CNN
-F 1 "AudioJack2_SwitchT" H 3880 6184 50  0000 C CNN
-F 2 "Connector_Audio:Jack_3.5mm_QingPu_WQP-PJ398SM_Vertical_CircularHoles" H 3850 5950 50  0001 C CNN
-F 3 "~" H 3850 5950 50  0001 C CNN
-	1    3850 5950
-	-1   0    0    -1  
+F 0 "J6" H 3880 6375 50  0000 C CNN
+F 1 "AudioJack2_SwitchT" H 3880 6284 50  0000 C CNN
+F 2 "Connector_Audio:Jack_3.5mm_QingPu_WQP-PJ398SM_Vertical_CircularHoles" H 3850 6050 50  0001 C CNN
+F 3 "~" H 3850 6050 50  0001 C CNN
+	1    3850 6050
+	-1   0    0    1   
 $EndComp
 $Comp
 L Device:R_POT RV1
@@ -842,19 +811,17 @@ F 3 "" H 3200 4600 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	3000 6050 3650 6050
-Wire Wire Line
-	3300 5950 3650 5950
 $Comp
 L power:GND #PWR?
 U 1 1 5D1BFD84
-P 3650 5850
+P 3650 6150
 AR Path="/5CAA6291/5D1BFD84" Ref="#PWR?"  Part="1" 
 AR Path="/5D1BFD84" Ref="#PWR031"  Part="1" 
-F 0 "#PWR031" H 3650 5600 50  0001 C CNN
-F 1 "GND" V 3655 5677 50  0000 C CNN
-F 2 "" H 3650 5850 50  0001 C CNN
-F 3 "" H 3650 5850 50  0001 C CNN
-	1    3650 5850
+F 0 "#PWR031" H 3650 5900 50  0001 C CNN
+F 1 "GND" V 3655 5977 50  0000 C CNN
+F 2 "" H 3650 6150 50  0001 C CNN
+F 3 "" H 3650 6150 50  0001 C CNN
+	1    3650 6150
 	0    1    1    0   
 $EndComp
 Connection ~ 4050 2400
@@ -1347,4 +1314,43 @@ F 3 "" H 6150 2500 50  0001 C CNN
 	1    6150 2500
 	0    -1   -1   0   
 $EndComp
+Wire Wire Line
+	2500 4500 2700 4500
+$Comp
+L MMBT2222A:MMBT2222A Q2
+U 1 1 5D860213
+P 2400 6050
+F 0 "Q2" H 2541 6096 50  0000 L CNN
+F 1 "MMBT2222A" H 2541 6005 50  0000 L CNN
+F 2 "MMBT2222A:SOT23" H 2400 6050 50  0001 L BNN
+F 3 "Unavailable" H 2400 6050 50  0001 L BNN
+F 4 "Fairchild Semiconductor" H 2400 6050 50  0001 L BNN "Field4"
+F 5 "MMBT2222 Series 40 V CE Breakdown 1 A NPN General Purpose Amplifier - SOT-23" H 2400 6050 50  0001 L BNN "Field5"
+F 6 "None" H 2400 6050 50  0001 L BNN "Field6"
+F 7 "SOT-23 Fairchild Semiconductor" H 2400 6050 50  0001 L BNN "Field7"
+F 8 "MMBT2222A." H 2400 6050 50  0001 L BNN "Field8"
+	1    2400 6050
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	2500 6050 2700 6050
+$Comp
+L MMBT2222A:MMBT2222A Q1
+U 1 1 5D862FDE
+P 2400 4500
+F 0 "Q1" H 2541 4546 50  0000 L CNN
+F 1 "MMBT2222A" H 2541 4455 50  0000 L CNN
+F 2 "MMBT2222A:SOT23" H 2400 4500 50  0001 L BNN
+F 3 "Unavailable" H 2400 4500 50  0001 L BNN
+F 4 "Fairchild Semiconductor" H 2400 4500 50  0001 L BNN "Field4"
+F 5 "MMBT2222 Series 40 V CE Breakdown 1 A NPN General Purpose Amplifier - SOT-23" H 2400 4500 50  0001 L BNN "Field5"
+F 6 "None" H 2400 4500 50  0001 L BNN "Field6"
+F 7 "SOT-23 Fairchild Semiconductor" H 2400 4500 50  0001 L BNN "Field7"
+F 8 "MMBT2222A." H 2400 4500 50  0001 L BNN "Field8"
+	1    2400 4500
+	-1   0    0    -1  
+$EndComp
+Connection ~ 3300 5950
+Wire Wire Line
+	3300 5950 3650 5950
 $EndSCHEMATC

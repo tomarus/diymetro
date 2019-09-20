@@ -300,10 +300,10 @@ Text HLabel 4800 3400 0    50   Input ~ 0
 +5V
 Text HLabel 4800 3600 0    50   Input ~ 0
 RCLK
-Text HLabel 4800 3700 0    50   Input ~ 0
-+5V
 Text HLabel 5350 4700 2    50   Input ~ 0
 GND
 Text HLabel 5050 4700 0    50   Input ~ 0
 +5V
+Text HLabel 4800 3700 0    50   Input ~ 0
+GND
 $EndSCHEMATC
