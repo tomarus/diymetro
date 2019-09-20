@@ -287,7 +287,7 @@ void advance_random_preset_init()
 void advance_random_preset()
 {
 	rndstep++;
-	if (rndstep > 8)
+	if (rndstep >= 8)
 	{
 		rndstep = 0;
 	}
