@@ -43,20 +43,6 @@ F 3 "~" H 2900 3700 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:D D?
-U 1 1 5D16DF58
-P 2400 2300
-AR Path="/5CAA6291/5D16DF58" Ref="D?"  Part="1" 
-AR Path="/5D16DF58" Ref="D?"  Part="1" 
-AR Path="/5D17C7E9/5D16DF58" Ref="D12"  Part="1" 
-F 0 "D12" H 2400 2200 50  0000 C CNN
-F 1 "D" H 2400 2400 50  0000 C CNN
-F 2 "Diode_SMD:D_1206_3216Metric" H 2400 2300 50  0001 C CNN
-F 3 "~" H 2400 2300 50  0001 C CNN
-	1    2400 2300
-	1    0    0    -1  
-$EndComp
-$Comp
 L Device:R_POT RV?
 U 1 1 5D16DF59
 P 5000 1850
@@ -300,7 +286,7 @@ Text HLabel 2550 2600 0    50   Input ~ 0
 S1
 Text HLabel 2550 2700 0    50   Input ~ 0
 S2
-Text HLabel 2250 2300 0    50   Input ~ 0
+Text HLabel 2550 2300 0    50   Input ~ 0
 AOUT
 Text HLabel 2550 2900 0    50   Input ~ 0
 GND

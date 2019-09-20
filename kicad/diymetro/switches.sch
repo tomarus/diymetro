@@ -80,19 +80,6 @@ Wire Wire Line
 Wire Wire Line
 	6700 3050 6700 3100
 $Comp
-L Device:D D?
-U 1 1 5D1A10D4
-P 5700 3600
-AR Path="/5CAA6291/5D1A10D4" Ref="D?"  Part="1" 
-AR Path="/5CAE4941/5D1A10D4" Ref="D3"  Part="1" 
-F 0 "D3" H 5700 3500 50  0000 C CNN
-F 1 "D" H 5700 3700 50  0000 C CNN
-F 2 "Diode_SMD:D_1206_3216Metric" H 5700 3600 50  0001 C CNN
-F 3 "~" H 5700 3600 50  0001 C CNN
-	1    5700 3600
-	1    0    0    -1  
-$EndComp
-$Comp
 L Device:R R8
 U 1 1 5D1B78A4
 P 3950 1950
@@ -529,12 +516,8 @@ Text HLabel 6850 3400 2    50   Input ~ 0
 +5V
 Text HLabel 6700 3050 1    50   Input ~ 0
 GND
-Wire Wire Line
-	5850 3600 5900 3600
-Text HLabel 5500 3600 0    50   Input ~ 0
+Text HLabel 5900 3600 0    50   Input ~ 0
 SA
-Wire Wire Line
-	5500 3600 5550 3600
 Text HLabel 5800 3800 0    50   Input ~ 0
 S0
 Text HLabel 5800 3900 0    50   Input ~ 0
