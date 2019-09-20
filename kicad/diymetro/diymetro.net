@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /home/tommy/src/tomarus/diymetro/kicad/diymetro/diymetro.sch)
-    (date "Fri 20 Sep 2019 09:45:47 PM CEST")
+    (date "Fri 20 Sep 2019 09:47:32 PM CEST")
     (tool "Eeschema 5.0.2+dfsg1-1~bpo9+1")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -300,6 +300,7 @@
       (tstamp 5D862FDE))
     (comp (ref C9)
       (value 100uF)
+      (footprint Tomarus:GenericCap)
       (datasheet ~)
       (libsource (lib Device) (part CP) (description "Polarized capacitor"))
       (sheetpath (names /) (tstamps /))
