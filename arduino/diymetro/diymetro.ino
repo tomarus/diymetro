@@ -266,6 +266,16 @@ void advance_random()
 	step = random(8);
 }
 
+byte loop2[] = { 0, 1, 2, 3, 4, 0, 1, 2, 3, 5, 0, 1, 2, 3, 6, 0, 1, 2, 3, 7 };
+void advance_loop2() {
+  substep++;
+  if (substep >= 20)
+  {
+    substep = 0;
+  }
+  step = loop2[substep];
+}
+
 byte rndsteps[8];
 int rndstep;
 void advance_random_preset_init()
@@ -332,7 +342,10 @@ void advance()
 	case 6:
 		advance_substep(32);
 		break;
-	case 7:
+  case 7:
+    advance_loop2();
+    break;
+	case 8:
 		advance_random();
 		break;
 	default:
