@@ -1,3 +1,11 @@
+//
+// TODO in next PCB version:
+// PIN_GATEOUT moved from PIN12/PB4/ICp18 to PIN8/PB0/ICp14
+// PIN_CLKINSW moved from A4/PC4/ICp27 to PIN15/PB1/ICp15
+// Reversed 595 SER + RCK
+// CV Pot Input = A4/PC4/ICp27
+//
+
 // Timing configurables, all values are in microseconds.
 // You might need to tweak these depending on your hardware.
 #define CLOCK_LENGTH 250
@@ -15,8 +23,6 @@
 #define PIN_GATESW A5
 #define PIN_CLKIN 2
 #define PIN_RSTIN 3
-
-#define PIN_DEBUG_LED 9
 
 // sensor outputs
 #define PIN_CLKOUT 7	 // PD7
@@ -41,11 +47,11 @@ void setup()
 	pinMode(PIN_594_SER, OUTPUT);
 	pinMode(PIN_594_RCLK, OUTPUT);
 	pinMode(PIN_594_SRCLK, OUTPUT);
-	pinMode(PIN_DEBUG_LED, OUTPUT);
 	pinMode(PIN_CLKIN, INPUT_PULLUP);
 	attachInterrupt(digitalPinToInterrupt(PIN_CLKIN), clock_receive, RISING);
 	attachInterrupt(digitalPinToInterrupt(PIN_RSTIN), reset_receive, RISING);
 	randomSeed(analogRead(0));
+	shiftOut2(0x01); // Turn on first led
 }
 
 int step = 0;
@@ -110,10 +116,8 @@ void loop()
 	unsigned long speed = 45000000.0 / (float(myAnalogRead(PIN_SPEED)) + 10.0);
 
 	// clocksw is high if an external clock is plugged in.
-	//	bool intclock = myAnalogRead(PIN_CLKINSW) < 512;
 	int ic = myAnalogRead(PIN_CLKINSW);
-	bool intclock = ic > 10 && ic < 900;
-	digitalWrite(PIN_DEBUG_LED, intclock);
+	bool intclock = ic < 512;
 
 	// if the gate is still open, turn it off after some time.
 	if (gateOpen && lastNotePlayed < micros() - (MAX_GATE_TIME * gatelen))
@@ -266,14 +270,15 @@ void advance_random()
 	step = random(8);
 }
 
-byte loop2[] = { 0, 1, 2, 3, 4, 0, 1, 2, 3, 5, 0, 1, 2, 3, 6, 0, 1, 2, 3, 7 };
-void advance_loop2() {
-  substep++;
-  if (substep >= 20)
-  {
-    substep = 0;
-  }
-  step = loop2[substep];
+byte loop2[] = {0, 1, 2, 3, 4, 0, 1, 2, 3, 5, 0, 1, 2, 3, 6, 0, 1, 2, 3, 7};
+void advance_loop2()
+{
+	substep++;
+	if (substep >= 20)
+	{
+		substep = 0;
+	}
+	step = loop2[substep];
 }
 
 byte rndsteps[8];
@@ -342,9 +347,9 @@ void advance()
 	case 6:
 		advance_substep(32);
 		break;
-  case 7:
-    advance_loop2();
-    break;
+	case 7:
+		advance_loop2();
+		break;
 	case 8:
 		advance_random();
 		break;
