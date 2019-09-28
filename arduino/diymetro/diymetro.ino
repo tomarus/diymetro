@@ -84,9 +84,6 @@ void reset_receive()
 int myAnalogRead(int pin)
 {
 	analogRead(pin);
-	delayMicroseconds(500);
-	analogRead(pin);
-	delayMicroseconds(500);
 	return analogRead(pin);
 }
 
